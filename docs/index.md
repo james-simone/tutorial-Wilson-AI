@@ -1,13 +1,22 @@
-# What is the Wilson cluster?
+# Introduction to running AI workflows on the Wilson HPC cluster
 
-# Why use the WC for AI?
 
-# What GPU resources are available?
+## What is the Wilson cluster?
 
-# Accessing the Wilson cluster
 
-# The Slurm batch system
+## Why use the WC for AI?
 
-# Why containers are recommneded for AI
 
-# Simple container
+## What GPU resources are available?
+
+
+## Accessing the Wilson cluster
+
+
+## The Slurm batch system
+
+
+## Why containers are recommneded for AI
+
+
+## Simple container
