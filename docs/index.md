@@ -81,6 +81,25 @@ Slurm allows setting job limits by partition.
 
 ### How to specify the number and type of GPU in a batch job
 
+All GPU worker nodes are in the `gpu_gce` partition except the IBM Power9 worker which in the `gpu_gce_ppc` partition.
+The WC has a variery of GPU worker nodes with different generations of NVIDIA GPUs. The "Slurm spec." in the table below is how
+how you tell slurm the GPU type you want. If you do not specifiy a type, you job will run with first available GPU of
+any type. 
+
+
+| Nodes | GPU type | CUDA cores | device mem. [GB] | Slurm spec. | GPUs/Node | Cores/Node  |  Mem/Node [GB] |
+|------:|:---------|-----------:|-----------------:|:------------|----------:|------------:|---------------:|
+|  1    | [A100](https://www.nvidia.com/en-us/data-center/a100/) | 6912       |  80              | a100        |  4        |   64        |  512          |
+|  4    | [V100](https://www.nvidia.com/en-us/data-center/v100/) | 5120       |  32              | v100        |  2        |   40        |   188          |
+|  1    | [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) | 3584       |  16              | p100        |  8        |   16        |   768          |
+|  1    | [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) | 3584       |  16              | p100nvlink  |  2        |   28        |  1000          |
+|  1 IBM   | [V100](https://www.nvidia.com/en-us/data-center/v100/) | 5120       |  32             |v100nvlinkppc64 | 4     |   32(128t)  |  1000          |
+
+A GPU job can request more than one GPU to enable parallel use GPUs by your code.
+Slurm, however, will not permit mixing different slurm specifications within a job, e.g., a slurm job cannot request
+eight V100 plus eight P100 devices. GPU workers are generally shared by by jobs requesting fewer than the maximum number of GPUs in a node.
+GPUs a never shared among different jobs, each job has exclusive use of the GPUs slurm assigns to it.
+
 ### Examples of slurm jobs
 
 #### Interactive job
