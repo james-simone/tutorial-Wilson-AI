@@ -67,7 +67,7 @@ The QOS level determines the limitations on jobs
 | test    | quick tests  | 75 | 4:00:00 | maxRun=1; maxSubmit=3 |
 | admin   | admin testing | 100 |  |  |
 
-## Slurm partitions
+### Slurm partitions
 
 A partition in slurm is a way to categorize worker nodes by their unique features. On the Wilson cluster we distinguish workers meant for CPU computing from GPU-acclerated workers. There is a separate partition for the one IBM Power9 "Summit-like" worker since the Power9 architechture is not
 binary compatible with the common AMD/Intel x86_64 architecture. There is also a test partition to set aside CPU workers for rapid testing.
@@ -76,9 +76,16 @@ Slurm allows setting job limits by partition.
 |-------------|--------------|------------:|-----------:|-----------:|---------------:|:-------------:|
 | cpu_gce     | CPU workers (16-core) | 90 | 50 | 24:00:00  |  8:00:00  |  Y |
 | cpu_gce_test | CPU workers (16-core) | 10 | 5 | 4:00:00  | 1:00:00 | Y |
-| gpu_gce      | various GPU workers | 11 |  | 24:00:00 | 8:00:00 | N |
+| gpu_gce      | various GPU workers | 11 | depends on GPU | 24:00:00 | 8:00:00 | N |
 | gpu_gce_ppc | IBM Power9 4x V100 | 1 | 1 | 24:00:00 | 8:00:00 | N |
 
+### How to specify the number and type of GPU in a batch job
+
+### Examples of slurm jobs
+
+#### Interactive job
+
+#### Batch scripts
 
 ## Why containers are recommended for AI
 
