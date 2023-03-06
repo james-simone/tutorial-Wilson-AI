@@ -1,5 +1,7 @@
 # Introduction to running AI workflows on the Wilson HPC cluster
 
+![QR code](https://github.com/james-simone/tutorial-Wilson-AI/blob/main/docs/QR_Code_1678133321.png)
+https://james-simone.github.io/tutorial-Wilson-AI/
 
 ## What is the Wilson cluster?
 
