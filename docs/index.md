@@ -124,7 +124,7 @@ Start batch jobs from your area under either `/work1` or `/wclustre`.
 Interactive batch jobs are started using the `srun` command. For example, with the default slurm account and QOS, the command below
 requests a single P100 GPU for one hour of wall time
 ```
-srun --unbuffered --pty --partition=gpu_gce --gres=gpu:p100:1 --nodes=1 --ntasks-per-node=1 --cpus-per-task=4 --time=01:00:00 /bin/bash
+srun --unbuffered --pty --partition=gpu_gce --gres=gpu:p100:1 --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=00:10:00 /bin/bash
 ```
 The request specifies one CPU task per node, each task is allocated four CPU cores to allow threads to execution on distinct cores.
 
