@@ -108,9 +108,35 @@ Slurm manages GPUs as generic resource via the `--gres` flag to the commands `sb
 | `--gres=gpu:v100:2` | two V100 GPUs per node -- the max on the Intel V100 workers |
 | `--gres=gpu:v100:2 --nodes=2` | four V100 GPUs total on two worker nodes |
 
-### Examples of slurm jobs
-
 #### Interactive job
+
+Interactive batch jobs are started using the `srun` command. For example, with the default slurm account and QOS, the command below
+requests a single P100 GPU for one hour of wall time
+```
+srun --unbuffered --pty --partition=gpu_gce --gres=gpu:p100:1 --nodes=1 --ntasks-per-node=1 --cpus-per-task=4 --time=01:00:00 /bin/bash
+```
+The request specifies one CPU task per node, each task is allocated four CPU cores to allow threads to execution on distinct cores.
+
+This batch job will potentially sharing a worker with other jobs since the default is non-exclusive scheduling for GPU workers, and
+the request does not ask for all available node resources.
+Once a suitable node is avialable, a bash shell prompt will be given on a worker. You can then type interactive commands on the
+GPU worker. For example, the command `nvidia-smi` will show this job is assigned one GPU
+```
+$ nvidia-smi
+Mon Mar  6 11:55:23 2023
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.48.07    Driver Version: 515.48.07    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla P100-PCIE...  On   | 00000000:07:00.0 Off |                    0 |
+| N/A   29C    P0    25W / 250W |      0MiB / 16384MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+```
+
 
 #### Batch scripts
 
