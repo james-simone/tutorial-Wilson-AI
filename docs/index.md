@@ -130,7 +130,7 @@ The request specifies one CPU task per node, each task is allocated four CPU cor
 
 This batch job will potentially sharing a worker with other jobs since the default is non-exclusive scheduling for GPU workers, and
 the request does not ask for all available node resources.
-Once a suitable node is avialable, a bash shell prompt will be given on a worker. You can then type interactive commands on the
+Once a suitable node is avialable, a bash shell will start on the worker. You can then type interactive commands that run on the
 GPU worker. For example, the command [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface)
 will show this job is assigned one GPU
 ```
