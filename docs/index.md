@@ -2,7 +2,7 @@
 
 ## https://james-simone.github.io/tutorial-Wilson-AI/
 
-![QR code](QR_Code_1678133321.png)
+![QR code](QR_Code_1678138121.png)
 
 ## What is the Wilson cluster?
 
