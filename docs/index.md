@@ -100,6 +100,14 @@ Slurm, however, will not permit mixing different slurm specifications within a j
 eight V100 plus eight P100 devices. GPU workers are generally shared by by jobs requesting fewer than the maximum number of GPUs in a node.
 GPUs a never shared among different jobs, each job has exclusive use of the GPUs slurm assigns to it.
 
+Slurm manages GPUs as generic resource via the `--gres` flag to the commands `sbatch`, `salloc`, or `srun`. For example,
+| slurm                |  description           |
+|:--------------------|:-----------------------|
+| `--gres=gpu:1`      | one GPU of any type per node   |
+| `--gres=gpu:p100:1` | one P100 GPU per node          |
+| `--gres=gpu:v100:2` | two V100 GPUs per node -- the max on the Intel V100 workers |
+| `--gres=gpu:v100:2 --nodes=2` | four V100 GPUs total on two worker nodes |
+
 ### Examples of slurm jobs
 
 #### Interactive job
