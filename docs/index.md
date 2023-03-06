@@ -108,7 +108,15 @@ Slurm manages GPUs as generic resource via the `--gres` flag to the commands `sb
 | `--gres=gpu:v100:2` | two V100 GPUs per node -- the max on the Intel V100 workers |
 | `--gres=gpu:v100:2 --nodes=2` | four V100 GPUs total on two worker nodes |
 
-#### Interactive job
+### Caveat concerning job submission
+
+**Please note that slurm jobs will NOT run from your home directory on the Wilson cluster!**
+
+Your Wilson home directory is your lab-wide  "nashome" directory. The `/nashome` filesystem is mounted with Kerberos authentication, and
+unfortunately, Kerberos is not currently compatible with slurm.
+Start batch jobs from your area under either `/work1` or `/wclustre`.
+
+### Interactive job
 
 Interactive batch jobs are started using the `srun` command. For example, with the default slurm account and QOS, the command below
 requests a single P100 GPU for one hour of wall time
@@ -120,7 +128,8 @@ The request specifies one CPU task per node, each task is allocated four CPU cor
 This batch job will potentially sharing a worker with other jobs since the default is non-exclusive scheduling for GPU workers, and
 the request does not ask for all available node resources.
 Once a suitable node is avialable, a bash shell prompt will be given on a worker. You can then type interactive commands on the
-GPU worker. For example, the command `nvidia-smi` will show this job is assigned one GPU
+GPU worker. For example, the command [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface)
+will show this job is assigned one GPU
 ```
 $ nvidia-smi
 Mon Mar  6 11:55:23 2023
@@ -138,7 +147,7 @@ Mon Mar  6 11:55:23 2023
 ```
 
 
-#### Batch scripts
+### Batch scripts
 
 ## Why containers are recommended for AI
 
