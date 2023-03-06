@@ -152,7 +152,9 @@ Mon Mar  6 11:55:23 2023
 
 ### Batch scripts
 
-The batch script is [here](https://github.com/james-simone/tutorial-Wilson-AI/blob/main/simple_batch.sh)
+Workflow commands to be executed in batch mode are put into a batch script. The variables prefaced with `#SBATCH`
+are [job submission options](https://slurm.schedmd.com/pdfs/summary.pdf) transmitted to slurm. Below, is a simple batch script. 
+The batch script is available [here](https://raw.githubusercontent.com/james-simone/tutorial-Wilson-AI/main/simple_batch.sh).
 ```
 #! /bin/bash
 
