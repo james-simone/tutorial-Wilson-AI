@@ -24,6 +24,12 @@ can provide a development on ramp to the big HPC centers. Features include
 
 Convergence: HPC features are important for AI performace!
 
+### I'm just learning AI and I prefer Jupyter notebooks to do tuorials and GPU code development
+
+Fermilab offers the Elastic Analysis Facility [EAF](https://analytics-hub.fnal.gov/hub/login?next=%2Fhub%2F)
+where the main user experience is based around
+[Jupyter](https://jupyter.org/) nodebooks. 
+
 ## Accessing the Wilson cluster
 
 
