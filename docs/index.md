@@ -19,10 +19,10 @@ can provide a development on ramp to the big HPC centers. Features include
 - high-bandwith, low-latency [InfiniBand](https://community.fs.com/blog/infiniband-vs-ethernet-which-is-right-for-your-data-center-network.html) networking among workers and storage
 - high-performace [Lustre](https://doc.lustre.org/lustre_manual.xhtml#understandinglustre.tab1) parallel filesystem
 - communal `/work1` file area shared by project members 
-- slurm batch system designed to run HPC workloads
+- [slurm](https://slurm.schedmd.com/SLUG18/slurm_overview.pdf) batch system designed to run HPC workloads
 - [Globus](https://www.globus.org/data-transfer) (endpoint: `fnal#wilson`) for transfers among data centers
 
-The HPC features of WC are important for AI as well as for traditional HPC workloads.
+Convergence: HPC features are important for AI performace!
 
 ## Accessing the Wilson cluster
 
