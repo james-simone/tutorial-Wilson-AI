@@ -6,11 +6,23 @@
 
 ## What is the Wilson cluster?
 
+The [Wilson cluster](https://computing.fnal.gov/wilsoncluster/) (WC) is a High Performance Computing (HPC) cluster
+available to the entire Fermilab scientific and engineering community. The WC is designed for running and being able
+to efficiently scale up parallel workloads over many CPUs and/or GPUs.
+The Wilson cluster provides
+HPC services typical of larger HPC centers such as NERSC, OLCF, or ALCF. The WC is considered a medium-scale HPC facility which
+can provide a development on ramp to the big HPC centers. Features include
+- up to O(512) CPU cores for tighly-coupled parallel computations (MPI, OpenMP, ...)
+- access to A100, V100, and P100 NVIDIA GPUs ([CUDA](https://developer.nvidia.com/cuda-toolkit), NVIDIA [HPC sdk](https://developer.nvidia.com/hpc-sdk))
+- multi-GPU equipped worker nodes and the ability to scale jobs to multiple GPUs
+- ability to run containerized applications [Apptainer](https://apptainer.org/)
+- high-bandwith, low-latency InfiniBand networking among workers and storage
+- high-performace [Lustre](https://doc.lustre.org/lustre_manual.xhtml#understandinglustre.tab1) parallel filesystem
+- communal `/work1` file area shared by project members 
+- slurm batch system designed to run HPC workloads
+- [Globus](https://www.globus.org/data-transfer) (endpoint: `fnal#wilson`) for transfers among data centers
 
-## Why use the WC for AI?
 
-
-## What GPU resources are available?
 
 
 ## Accessing the Wilson cluster
