@@ -12,8 +12,8 @@ to efficiently scale up parallel workloads over many CPUs and/or GPUs.
 The Wilson cluster provides
 HPC services typical of larger HPC centers such as NERSC, OLCF, or ALCF. The WC is considered a medium-scale HPC facility which
 can provide a development on ramp to the big HPC centers. Features include
-- up to O(512) CPU cores per job for tighly-coupled parallel computations (MPI, [OpenMP](https://www.openmp.org/), ...)
-- access to A100, V100, and P100 NVIDIA GPUs ([CUDA](https://developer.nvidia.com/cuda-toolkit), NVIDIA [HPC sdk](https://developer.nvidia.com/hpc-sdk))
+- up to O(800) CPU cores per job for tighly-coupled parallel computations (MPI, [OpenMP](https://www.openmp.org/), ...)
+- access to A100, V100, and P100 [NVIDIA GPUs](https://www.nvidia.com/en-us/data-center/products/) ([CUDA](https://developer.nvidia.com/cuda-toolkit), NVIDIA [HPC sdk](https://developer.nvidia.com/hpc-sdk))
 - multi-GPU equipped worker nodes and the ability to scale jobs to multiple GPUs
 - ability to run containerized applications [Apptainer](https://apptainer.org/)
 - high-bandwith, low-latency [InfiniBand](https://community.fs.com/blog/infiniband-vs-ethernet-which-is-right-for-your-data-center-network.html) networking among workers and storage
@@ -23,7 +23,6 @@ can provide a development on ramp to the big HPC centers. Features include
 - [Globus](https://www.globus.org/data-transfer) (endpoint: `fnal#wilson`) for transfers among data centers
 
 The HPC features of WC are important for AI as well as for traditional HPC workloads.
-
 
 ## Accessing the Wilson cluster
 
