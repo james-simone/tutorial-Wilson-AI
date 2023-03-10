@@ -191,35 +191,44 @@ nvidia-smi
 ## Why containers are recommended for AI
 
 
-### Setup Apptainer
+### Configuring Apptainer
 
+Apptainer is provided as a software module. We can check what versions of Apptainer are available.
 ```
 module avail apptainer
+```
 ```
 ------------------------------------------------ /srv/software/hpc/modulefiles -------------------------------------------------
    apptainer/1.1.0    apptainer/1.1.3 (D)
 ```
-
+The 1.1.3 version will be loaded by default.
+```
+module load apptainer
+```
 ```
 $ apptainer --version
 apptainer version 1.1.3
 ```
 
+Apptainer needs a chache area for building containers, which defaults to your home directory. It's better to
+use a cache area within your project's Lustre area. 
 ```
 export APPTAINER_CACHEDIR=/wclustre/simone/apptainer/.apptainer/cache
 mkdir -p $APPTAINER_CACHEDIR
 ```
-
+It's good practice to check what's in your cache and clean the cache regularly. The `--dry-run` option checks, but does not remove files.
 ```
 apptainer cache clean --dry-run
 ```
 
 ### Build / fetch a simple container from Docker Hub
 
+In this section we demonstrate how to fecth a very simple container from DockerHub.
+Apptainer understands how to fetch a container from DockerHub and convert it into a local Apptainer container in Singularity Image Format (SIF). 
 ```
 apptainer build lolcow.sif docker://godlovedc/lolcow
 ```
-
+Containers frequently contain a script which will be executed when the container is `run`.
 ```
 apptainer run lolcow.sif
 ```
@@ -236,13 +245,17 @@ apptainer run lolcow.sif
                 ||     ||
 ```
 
+Inside the container is a guest Linux environment which is different from the host Linux on the system running the container.
+The host Linux is a RH7 derivative, while the environment is this guest is Ubuntu 16.
 ```
 apptainer shell lolcow.sif
 ```
-````
+You will be given a shell running inside the container. Here we use `cat` to examine the Linux version.
+```
 Apptainer> cat /etc/lsb-release
 DISTRIB_ID=Ubuntu
 DISTRIB_RELEASE=16.04
 DISTRIB_CODENAME=xenial
 DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
+Apptainer>
 ```
