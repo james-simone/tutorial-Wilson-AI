@@ -281,20 +281,19 @@ We start an interactive slurm job.
 srun --unbuffered --pty -A wc_test --partition=gpu_gce --gres=gpu:v100:1 --qos=regular --nodes=1 --time=01:00:00 --ntasks-per-node=4 /bin/bash
 ```
 
-Once we get a shell from slum, we can run a shell in the container
-```
-```
-
-The container provides Python3 with Torch installed. We start the container
+Once we get a shell from slum, we can start a shell in the container
 ```
 apptainer shell --home=/work1/simone --nv pytorch-23.02-py3.sif
 ```
 The `--home` flag tells apptainer to use `/work1/simone` as my home directory. At start, your working directory is the one from which you started apptainer. The `--nv` flag is necessary to tell the guest OS in the container about the host's GPUs.
 
-After the `Appptainer>` shell prompt, we run the [mnist]() example. The `mnist_main.py` script is located in my project area on Wilson.
+After the `Appptainer>` shell prompt, we can run python in the container that has Torch installed.
+Here, we run the [mnist]() example. The `mnist_main.py` example script is located in my project area on Wilson.
+The container provides Python3 with Torch installed.
 ```
 python ../examples/pytorch/mnist_main.py
 ```
+You will see output from Torch training in the shell output.
 
 
 
