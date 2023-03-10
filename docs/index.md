@@ -223,8 +223,9 @@ apptainer cache clean --dry-run
 
 ### Build / fetch a simple container from Docker Hub
 
-In this section we demonstrate how to fecth a very simple container from DockerHub.
-Apptainer understands how to fetch a container from DockerHub and convert it into a local Apptainer container in Singularity Image Format (SIF). 
+In this section we demonstrate how to fecth a very simple container from [DockerHub](https://hub.docker.com/).
+Apptainer understands how to fetch a container from DockerHub and convert it into a local Apptainer container in Singularity Image Format (SIF).
+We will create local lolcow.sif image from [lolcow](https://hub.docker.com/r/godlovedc/lolcow) on DockerHub.
 ```
 apptainer build lolcow.sif docker://godlovedc/lolcow
 ```
@@ -259,3 +260,19 @@ DISTRIB_CODENAME=xenial
 DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
 Apptainer>
 ```
+
+### Obtaining a pyTorch container from NVIDIA
+
+NVIDIA provides GPU enabled containers for a wide variety of AI, digital twin, and HPC applications in their
+[NGC catalog](https://catalog.ngc.nvidia.com/). Using search we find [pyTorch](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)
+and under [Tags](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags) you will find pYTorch in a variety of versions.
+Here we select a recent version with the tag `23.02-py3`. Under the `...` menus select the 'Copy image path' option to get the path to the container.
+In the `pull` command below prefix the NGC path with `docker://'. We name the local container `pytorch-23.02-py3.sif`.
+```
+apptainer pull pytorch-23.02-py3.sif docker://nvcr.io/nvidia/pytorch:23.02-py3
+```
+Note that thw pull command will take some time to complete and the SIF file will be large. You many wish to store your SIF files in Lustre.
+
+
+
+
