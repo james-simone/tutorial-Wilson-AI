@@ -191,4 +191,58 @@ nvidia-smi
 ## Why containers are recommended for AI
 
 
-## Simple container
+### Setup Apptainer
+
+```
+module avail apptainer
+```
+------------------------------------------------ /srv/software/hpc/modulefiles -------------------------------------------------
+   apptainer/1.1.0    apptainer/1.1.3 (D)
+```
+
+```
+$ apptainer --version
+apptainer version 1.1.3
+```
+
+```
+export APPTAINER_CACHEDIR=/wclustre/simone/apptainer/.apptainer/cache
+mkdir -p $APPTAINER_CACHEDIR
+```
+
+```
+apptainer cache clean --dry-run
+```
+
+### Build / fetch a simple container from Docker Hub
+
+```
+apptainer build lolcow.sif docker://godlovedc/lolcow
+```
+
+```
+apptainer run lolcow.sif
+```
+```
+ ________________________
+/ Don't Worry, Be Happy. \
+|                        |
+\ -- Meher Baba          /
+ ------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+```
+apptainer shell lolcow.sif
+```
+````
+Apptainer> cat /etc/lsb-release
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
+```
