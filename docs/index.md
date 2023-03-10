@@ -267,11 +267,11 @@ NVIDIA provides GPU enabled containers for a wide variety of AI, digital twin, a
 [NGC catalog](https://catalog.ngc.nvidia.com/). Using search we find [pyTorch](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)
 and under [Tags](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags) you will find pYTorch in a variety of versions.
 Here we select a recent version with the tag `23.02-py3`. Under the `...` menus select the 'Copy image path' option to get the path to the container.
-In the `pull` command below prefix the NGC path with `docker://'. We name the local container `pytorch-23.02-py3.sif`.
+In the `pull` command below prefix the NGC path with `docker://`. We name the local container `pytorch-23.02-py3.sif`.
 ```
 apptainer pull pytorch-23.02-py3.sif docker://nvcr.io/nvidia/pytorch:23.02-py3
 ```
-Note that thw pull command will take some time to complete and the SIF file will be large. You many wish to store your SIF files in Lustre.
+Note that the pull command will take some time to complete and the SIF file will be large! You many wish to store your SIF files in Lustre.
 
 
 
