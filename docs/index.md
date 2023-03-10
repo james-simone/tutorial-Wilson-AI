@@ -171,7 +171,7 @@ Mon Mar  6 11:55:23 2023
 
 Workflow commands to be executed in batch mode are put into a batch script. The variables prefaced with `#SBATCH`
 are [job submission options](https://slurm.schedmd.com/pdfs/summary.pdf) transmitted to slurm. Below, is a simple batch script. 
-The batch script is available [here](https://raw.githubusercontent.com/james-simone/tutorial-Wilson-AI/main/simple_batch.sh).
+The batch script is available [here](https://raw.githubusercontent.com/james-simone/tutorial-Wilson-AI/main/examples/simple_batch/simple_batch.sh).
 ```
 #! /bin/bash
 
@@ -276,6 +276,8 @@ You may wish to clean your Apptainer cache follwing this pull.
 
 ### Running pyTorch on a GPU worker interactively
 
+Interactive batch jobs are best suited for quick tests or debugging code issues. This section demonstates running a Torch container on a Wilson GPU worker.
+
 We start an interactive slurm job.
 ```
 srun --unbuffered --pty -A wc_test --partition=gpu_gce --gres=gpu:v100:1 --qos=regular --nodes=1 --time=01:00:00 --ntasks-per-node=4 /bin/bash
@@ -289,12 +291,22 @@ The `--home` flag tells apptainer to use `/work1/simone` as my home directory. A
 
 After the `Appptainer>` shell prompt, we can run python in the container that has Torch installed.
 Here, we run the [mnist](https://github.com/pytorch/examples/tree/main/mnist) example.
-The `mnist_main.py` example script is located in my project area on Wilson.
+The `mnist_main.py` example script is located on Wilson in the directory where the batch job was started.
 The container provides Python3 with Torch installed.
 ```
-python ../examples/pytorch/mnist_main.py
+python mnist_main.py
 ```
 You will see output from Torch training in the shell output.
+
+### Running pyTorch as a batch job
+
+Batch jobs are best suited for long runs of established workflows. One or more steps of the workflow are written as bash commands in a file.
+The files necessary to run the Torch MNIST example in batch are found in this repository under [examples/torch_mnist](https://github.com/james-simone/tutorial-Wilson-AI/tree/main/examples).
+
+Use the `sbatch` command to submit the batch file for execution.
+```
+sbatch batch_mnist.sh
+```
 
 
 
