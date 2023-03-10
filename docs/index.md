@@ -301,7 +301,8 @@ You will see output from Torch training in the shell output.
 ### Running pyTorch as a batch job
 
 Batch jobs are best suited for long runs of established workflows. One or more steps of the workflow are written as bash commands in a file.
-The files necessary to run the Torch MNIST example in batch are found in this repository under [examples/torch_mnist](https://github.com/james-simone/tutorial-Wilson-AI/tree/main/examples).
+The files necessary to run the Torch MNIST example in batch are found in this repository under
+[examples/torch_mnist](https://github.com/james-simone/tutorial-Wilson-AI/tree/main/examples/torch_mnist).
 
 Use the `sbatch` command to submit the batch file for execution.
 ```
