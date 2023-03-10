@@ -271,7 +271,31 @@ In the `pull` command below prefix the NGC path with `docker://`. We name the lo
 ```
 apptainer pull pytorch-23.02-py3.sif docker://nvcr.io/nvidia/pytorch:23.02-py3
 ```
-Note that the pull command will take some time to complete and the SIF file will be large! You many wish to store your SIF files in Lustre.
+Note that the pull command will take some time to complete and the SIF file will be large (8.4GB)! You many wish to store your SIF files in Lustre.
+You may wish to clean your Apptainer cache follwing this pull. 
+
+### Running pyTorch on a GPU worker interactively
+
+We start an interactive slurm job.
+```
+srun --unbuffered --pty -A wc_test --partition=gpu_gce --gres=gpu:v100:1 --qos=regular --nodes=1 --time=01:00:00 --ntasks-per-node=4 /bin/bash
+```
+
+Once we get a shell from slum, we can run a shell in the container
+```
+```
+
+The container provides Python3 with Torch installed. We start the container
+```
+apptainer shell --home=/work1/simone --nv pytorch-23.02-py3.sif
+```
+The `--home` flag tells apptainer to use `/work1/simone` as my home directory. At start, your working directory is the one from which you started apptainer. The `--nv` flag is necessary to tell the guest OS in the container about the host's GPUs.
+
+After the `Appptainer>` shell prompt, we run the [mnist]() example. The `mnist_main.py` script is located in my project area on Wilson.
+```
+python ../examples/pytorch/mnist_main.py
+```
+
 
 
 
