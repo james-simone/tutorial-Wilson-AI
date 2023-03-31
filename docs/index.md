@@ -107,13 +107,13 @@ how you tell slurm the GPU type you want. If you do not specifiy a type, you job
 any type. 
 
 
-| Nodes | GPU type | CUDA cores | device mem. [GB] | Slurm spec. | GPUs/Node | Cores/Node  |  Mem/Node [GB] |
+| Nodes | GPU type | CUDA cores | device mem. [GB] | Slurm spec. | GPUs/Node | Cores/GPU  |  Mem/GPU [GB] |
 |------:|:---------|-----------:|-----------------:|:------------|----------:|------------:|---------------:|
-|  1    | [A100](https://www.nvidia.com/en-us/data-center/a100/) | 6912       |  80              | a100        |  4        |   64        |  512          |
-|  4    | [V100](https://www.nvidia.com/en-us/data-center/v100/) | 5120       |  32              | v100        |  2        |   40        |   188          |
-|  1    | [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) | 3584       |  16              | p100        |  8        |   16        |   768          |
-|  1    | [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) | 3584       |  16              | p100nvlink  |  2        |   28        |  1000          |
-|  1 IBM   | [V100](https://www.nvidia.com/en-us/data-center/v100/) | 5120       |  32             |v100nvlinkppc64 | 4     |   32(128t)  |  1000          |
+|  1    | [A100](https://www.nvidia.com/en-us/data-center/a100/) | 6912       |  80              | a100        |  4        |   16        |  126          |
+|  4    | [V100](https://www.nvidia.com/en-us/data-center/v100/) | 5120       |  32              | v100        |  2        |   20        |   92          |
+|  1    | [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) | 3584       |  16              | p100        |  8        |   2        |   94          |
+|  1    | [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) | 3584       |  16              | p100nvlink  |  2        |   14        |  500          |
+|  1 IBM   | [V100](https://www.nvidia.com/en-us/data-center/v100/) | 5120       |  32             |v100nvlinkppc64 | 4     |   8(32t)  |  250          |
 
 A GPU job can request more than one GPU to enable parallel use GPUs by your code.
 Slurm, however, will not permit mixing different slurm specifications within a job, e.g., a slurm job cannot request
@@ -127,6 +127,8 @@ Slurm manages GPUs as generic resource via the `--gres` flag to the commands `sb
 | `--gres=gpu:p100:1` | one P100 GPU per node          |
 | `--gres=gpu:v100:2` | two V100 GPUs per node -- the max on the Intel V100 workers |
 | `--gres=gpu:v100:2 --nodes=2` | four V100 GPUs total on two worker nodes |
+
+The GPU workers, by default, are shared by batch jobs. The batch system is configured to portion out CPU and RAM to each batch job. GPU jobs are assigned default values `--cpu-cores-per-gpu=2` and `--mem-per-gpu=30G`. Jobs may request more than the default values. The table above shows suggested maximum `Cores/GPU` and `Mem/GPU` values assuming resources are divided evenly among GPUs.
 
 ### Caveat concerning job submission
 
