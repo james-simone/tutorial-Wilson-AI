@@ -111,7 +111,7 @@ any type.
 |------:|:---------|-----------:|-----------------:|:------------|----------:|------------:|---------------:|
 |  1    | [A100](https://www.nvidia.com/en-us/data-center/a100/) | 6912       |  80              | a100        |  4        |   16        |  126          |
 |  4    | [V100](https://www.nvidia.com/en-us/data-center/v100/) | 5120       |  32              | v100        |  2        |   20        |   92          |
-|  1    | [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) | 3584       |  16              | p100        |  8        |   2        |   94          |
+|  1    | [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) | 3584       |  16              | p100        |  8        |   2        |   92          |
 |  1    | [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) | 3584       |  16              | p100nvlink  |  2        |   14        |  500          |
 |  1 IBM   | [V100](https://www.nvidia.com/en-us/data-center/v100/) | 5120       |  32             |v100nvlinkppc64 | 4     |   8(32t)  |  250          |
 
