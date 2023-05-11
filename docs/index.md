@@ -138,6 +138,16 @@ Your Wilson home directory is your lab-wide  "nashome" directory. The `/nashome`
 unfortunately, Kerberos is not currently compatible with slurm.
 Start batch jobs from your area under either `/work1` or `/wclustre`.
 
+### How can I see which GPU workers are in use?
+
+The `squeue` command with the options below will tell you the status of GPU batch jobs including which workers are in use, how many GPUs a job is using,
+the number of cores, maximum memory, how log the job has been running, and the time limit for jobs.
+
+```
+squeue -p gpu_gce --Format=Account:.10,UserName:.10,NodeList:.10,tres-alloc:.64,State:.8,TimeUsed:.10,TimeLimit:.12
+```
+Unfortunately, many of the job requirements are given in a difficult to read list under `TRES_ALLOC` column.
+
 ### Interactive job
 
 Interactive batch jobs are started using the `srun` command. For example, with the default slurm account and QOS, the command below
